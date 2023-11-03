@@ -1,0 +1,32 @@
+.dropdown-wrapper {
+    position: relative;
+    width: 200px;
+    font-size: 18px;
+}
+
+.dropdown-selected {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.option-wrapper {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 100%;
+    left: 0px;
+    border: 1px solid #ccc;
+}
+
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-option:hover {
+    background-color: #f1f1f1;
+}
