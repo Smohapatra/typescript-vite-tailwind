@@ -2,9 +2,9 @@ import './App.css';
 import { useState } from 'react';
 
 type Card = {
-  email: FormDataEntryValue | null;
-  password: FormDataEntryValue | null;
-  rememberMe: FormDataEntryValue | null;
+  email: string | null;
+  password: string | null;
+  rememberMe: boolean | null;
 };
 
 const LIMIT = 5;
@@ -16,9 +16,9 @@ function App() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const email = formData.get('email');
-    const password = formData.get('password');
-    const rememberMe = formData.get('rememberMe');
+    const email = formData.get('email') as string | null;
+    const password = formData.get('password') as string | null;
+    const rememberMe = formData.get('rememberMe') === 'on' ? true : false;
     console.log(email, password, rememberMe);
     setCards(prev => [...prev, {email, password, rememberMe}]);
     event.currentTarget.reset();
@@ -47,7 +47,7 @@ function App() {
           <div key={index} className='p-4 border w-56'>
             <p>Email: {card.email}</p>
             <p>Password: {card.password}</p>
-            <p>Remember Me: {card.rememberMe}</p>
+            <p>Remember Me: {card.rememberMe ? 'Yes' : 'No'}</p>
           </div>
         ))}
       </div>
